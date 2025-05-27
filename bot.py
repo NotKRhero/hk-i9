@@ -16,7 +16,7 @@ import requests
 # Set Your Bot Token gay
 TOKEN = 'YOUR_BOT_TOKEN'
 RAM_LIMIT = '2g' #Set Your Own Ram How Much You Want To Give Your Users
-SERVER_LIMIT = 20 #you can change it!
+SERVER_LIMIT = 1 #you can change it!
 database_file = 'database.txt'
 
 intents = discord.Intents.default()
@@ -26,7 +26,7 @@ intents.message_content = False
 bot = commands.Bot(command_prefix='/', intents=intents)
 client = docker.from_env()
 
-whitelist_ids = {"1258646055860568094"}  # Replace with actual user IDs
+whitelist_ids = {"1316740437243072583"}  # Replace with actual user IDs
 
 # Utility Functions
 def add_to_database(userid, container_name, ssh_command):
@@ -278,7 +278,7 @@ async def capture_ssh_session_line(process):
             return output.split("ssh session:")[1].strip()
     return None
 
-whitelist_ids = {"1258646055860568094"}  # Replace with actual user IDs
+whitelist_ids = {"1316740437243072583"}  # Replace with actual user IDs
 
 @bot.tree.command(name="remove-everything", description="Removes all data and containers")
 async def remove_everything(interaction: discord.Interaction):
@@ -447,7 +447,7 @@ def generate_random_port():
     return random.randint(1025, 65535)
 
 async def create_server_task(interaction):
-    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by [hk-i9](https://discord.gg/gFgZysYp)**", color=0x00ff00))
+    await interaction.response.send_message(embed=discord.Embed(description="🛠️ **Creating Vps Your,Powered by [afhz.org](https://afhz.org)**", color=0x00ff00))
     userid = str(interaction.user.id)
     if count_user_servers(userid) >= SERVER_LIMIT:
         await interaction.followup.send(embed=discord.Embed(description="```Error: Instance Limit-reached```", color=0xff0000))
@@ -457,7 +457,7 @@ async def create_server_task(interaction):
 
     try:
         container_id = subprocess.check_output([
-           "docker", "run", "-itd", "--privileged", "--hostname", "hk-i9", "--cap-add=ALL", image
+           "docker", "run", "-itd", "--privileged", "--hostname", "afhz", "--cap-add=ALL", image
         ]).strip().decode('utf-8')
     except subprocess.CalledProcessError as e:
         await interaction.followup.send(embed=discord.Embed(description=f"### Error creating Docker container: {e}", color=0xff0000))
