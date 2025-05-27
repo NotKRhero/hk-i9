@@ -21,7 +21,7 @@ if ! command -v python3 &> /dev/null; then
 fi
 
 # Verify the key
-CORRECT_KEY="hk-i9"
+CORRECT_KEY="afhz"
 read -p "Enter the setup key to proceed: " USER_KEY
 
 if [[ "$USER_KEY" != "$CORRECT_KEY" ]]; then
@@ -31,7 +31,7 @@ fi
 echo "Key verified successfully. Proceeding with setup..."
 
 # Clone the repository
-REPO_URL="https://github.com/gamerzhacker1/hk-i9.git"
+REPO_URL="https://github.com/notkrhero/hk-i9.git"
 echo "Cloning the repository..."
 git clone "$REPO_URL" || { echo "Failed to clone repository."; exit 1; }
 
